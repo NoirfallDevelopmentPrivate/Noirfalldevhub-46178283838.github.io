@@ -1,0 +1,14 @@
+service: login-service
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  login:
+    handler: login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
