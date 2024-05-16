@@ -13,15 +13,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Serverless Framework
-        run: npm install -g serverless
+      - name: Install dependencies
+        run: npm install
 
-      - name: Deploy to GitHub Pages
+      - name: Build serverless function
+        run: npm run build
+
+      - name: Copy files to docs directory
         run: |
-          serverless deploy
-          mkdir -p $GITHUB_WORKSPACE/docs
-          cp -R .serverless $GITHUB_WORKSPACE/docs/.serverless
-          cp serverless.yml $GITHUB_WORKSPACE/docs/serverless.yml
-          cp login.js $GITHUB_WORKSPACE/docs/login.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          mkdir -p docs
+          cp login.js docs/login.js
+          cp index.html docs/index.html
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Deploy"
+          git push origin main
