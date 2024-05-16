@@ -1,1 +1,34 @@
 
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build serverless function
+        run: npm run build
+
+      - name: Copy files to docs directory
+        run: |
+          mkdir -p docs
+          cp login.js docs/login.js
+          cp index.html docs/index.html
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Deploy"
+          git push origin main
