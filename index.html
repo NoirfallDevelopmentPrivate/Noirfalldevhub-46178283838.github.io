@@ -1,83 +1,94 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    <meta charset="UTF-8">
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.form-group {
+    margin-bottom: 20px;
+}
 
-    <title>Login Form</title>
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
 
-    <link rel="stylesheet" href="style.css">
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
+.btn:hover {
+    background-color: #0056b3;
+}
+</style>
 </head>
-
-
-
 <body>
 
-    <div class="wrapper">
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" action="#" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
 
-        <header>Login Form</header>
+<script src="credentials.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-        <form action="#">
+    // Get the input values
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-            <div class="field email">
-
-                <div class="input-area">
-
-                    <input type="text" placeholder="Email Address">
-
-                    <i class="icon fas fa-envelope"></i>
-
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-
-                </div>
-
-                <div class="error error-txt">Email can't be blank</div>
-
-            </div>
-
-            <div class="field password">
-
-                <div class="input-area">
-
-                    <input type="password" placeholder="Password">
-
-                    <i class="icon fas fa-lock"></i>
-
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-
-                </div>
-
-                <div class="error error-txt">Password can't be blank</div>
-
-            </div>
-
-            <div class="pass-txt"><a href="#">Forgot password?</a></div>
-
-            <input type="submit" value="Login">
-
-        </form>
-
-        <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
-
-    </div>
-
-
-
-    <script src="script.js"></script>
-
-
+    // Check if the input matches the stored credentials
+    if (username === credentials.username && password === credentials.password) {
+        alert('Login successful');
+        // Redirect to index1.html
+        window.location.href = 'index1.html';
+    } else {
+        alert('Invalid username or password');
+    }
+});
+</script>
 
 </body>
-
-
-
-                </html>
+</html>
