@@ -1,0 +1,29 @@
+<!-- index1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authenticated Page</title>
+</head>
+<body>
+
+<h1>Hello, User!</h1>
+
+<script>
+// Check if the user is authenticated
+function checkAuth() {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (!isAuthenticated) {
+        // Redirect to login page if not authenticated
+        window.location.href = 'login.html';
+    }
+}
+
+// Check authentication on page load
+checkAuth();
+</script>
+
+</body>
+</html>
