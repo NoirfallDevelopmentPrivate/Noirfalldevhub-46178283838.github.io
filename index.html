@@ -45,6 +45,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         window.location.href = 'index1.html';
     } else {
         alert('Invalid username or password');
+        // Clear the password field
+        document.getElementById('password').value = '';
     }
 });
 </script>
