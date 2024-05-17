@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" action="#" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group remember-me">
+            <input type="checkbox" id="rememberMe"> <!-- Add remember me checkbox -->
+            <label for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div id="errorMessage" class="error-message"></div>
+    </form>
+</div>
+
+<script src="bob.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+    console.log("Form submitted"); // Debug statement
+
+    // Get the input values
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    console.log("Username:", username);
+    console.log("Password:", password);
+
+    // Check if the input matches the stored credentials
+    if (username === credentials.username && password === credentials.password) {
+        console.log("Login successful"); // Debug statement
+        // Set authenticated flag in localStorage
+        localStorage.setItem('isAuthenticated', true);
+        // Redirect to index1.html
+        window.location.href = 'index1.html';
+    } else {
+        console.log("Invalid username or password"); // Debug statement
+        document.getElementById('errorMessage').textContent = 'Invalid username or password';
+        // Clear the password field
+        document.getElementById('password').value = '';
+    }
+});
+</script>
+
+</body>
+</html>
