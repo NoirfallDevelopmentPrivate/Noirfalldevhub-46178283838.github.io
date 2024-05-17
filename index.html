@@ -1,129 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Form</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+<!DOCTYPE html><html><head><title>Makerchip</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><meta name="google-site-verification" content="idkfCxcszmtvpsBfu4nvH1SQ7n1_JSM5IszzCDMic6s" /><link rel="stylesheet" href="downloads/roboto_font.css" /><link rel="stylesheet" href="downloads/material_icons.css" /><link rel="stylesheet" href="downloads/bootstrap-material-design.min.css" /><link href="https://warp-v.makerchip.com/downloads/font-awesome/css/font-awesome.min.css" rel="stylesheet" /></head><body><div style="margin-bottom: 30px!important" class="container-fluid mc-theme-dark4-bg pageheader p-y-3 m-b-1"><div class="container"><div class="row"><div class="col-xs-6 col-sm-3 col-xl-2"><img src="module/IDE/makerchip-logo-normal.svg" /></div><div position="relative" class="col-xs-6 col-sm-9 col-md-8"><h4 style="position: absolute; bottom: 35%"><span class="hidden-sm-down">The most powerful</span> <span class="hidden-xs-down">Verilog design environment</span> <span class="hidden-sm-down">-- for everyone!</span></h4><div style="position: absolute; left: -40px; bottom: 0px; font-size: 17px; font-weight: 400" class="lead m-t2 mc-dark-text"><div style="font-size: 17px" class="hidden-sm-down">by <a target="_blank" href="http://redwoodeda.com/">Redwood EDA, LLC</a></div><div style="font-size: 14px" class="hidden-md-up">by <a target="_blank" href="http://redwoodeda.com/">Redwood EDA, LLC</a></div></div></div></div></div></div><div class="container"><div class="row m-y-1 p-b-2"><div class="col-xs-8 offset-xs-2"><img width="1041" height="622" src="assets/homepage/MakerchipSplash.png" class="img-fluid" /></div></div><div class="row p-y-3"><a href="sandbox/index.html" style="margin:auto;width:300px" class="btn btn-raised btn-primary btn-lg btn-block">Launch Makerchip IDE</a></div><div class="row"><a target="_blank" href="https://status.makerchip.com/" style="margin:auto"><img alt="server health unknown" src="https://status.makerchip.com/health" /></a></div><div class="row m-y-3"><div class="col-sm-12"><h2 id="mission">Our Mission</h2><p>Circuit design has been a game for big industry for far too long! Makerchip provides free
+and instant access to the latest tools directly from your browser and <a target="_blank" href="https://gitlab.com/rweda/makerchip-app">from your desktop</a>.
+This includes open-source tools and proprietary ones.
+Turning the tables for the open-source community, <a target="_blank" href="http://redwoodeda.com">Redwood EDA, LLC</a>'s
+commercial capabilities are often available for open-source development here first--<i><b>before</b> </i> they are
+available commercially!</p></div></div><div class="row m-y-1 p-t-3"><div class="col-md-6"><h2 id="verilog">Develop Verilog in your Browser</h2><p>You can code, compile, simulate, and debug Verilog designs, all from your browser. Your code,
+block diagrams, waveforms, and novel visualization capabilities are tightly integrated for
+a seamless design experience.</p>
+<p>While Makerchip introduces
+ground-breaking capabilities for advanced Verilog design, it also makes circuit design easy and
+fun! Tutorials will get you going.</p></div><div class="col-md-6"><img src="assets/homepage/verilog.png" class="img-fluid" /></div></div><div class="row m-y-3"><div class="col-sm-12"><h2 id="tl-verilog">Beyond Verilog</h2><p>Did we say &quot;easy&quot; and &quot;Verilog&quot; in the same breath? That's just contradictory!
+That's why it is so important that Makerchip supports the emerging <a target="_blank" href="http://tl-x.org">Transaction-Level Verilog standard</a>. Transaction-Level Verilog, or TL-Verilog, represents a huge step
+forward, by eliminating the need for the legacy language features of Verilog and by introducing
+simpler syntax. At the same time, TL-Verilog adds powerful constructs for pipelines and
+transactions. We'll help you learn it, and you'll never turn back!
+It's the easiest way to write and edit your Verilog with fewer bugs.</p></div></div><div class="row m-y-3"><div class="col-sm-12"><h3 id="pipeline">Easy Pipelining</h3><p>Here's a quick taste of TL-Verilog. (Not familiar with sequential logic? Try <a target="_blank" href="https://en.wikipedia.org/wiki/Sequential_logic">Wikipedia</a>.)</p><p>Instead of writing in Verilog <code>always_ff @(posedge clk) begin ...</code> to create flip-flops... don't write anything!
+Organize your Verilog logic statements into pipelines, and let TL-Verilog
+imply the necessary flip-flops.</p><p>The code below provides a pipeline, called <code>|incr</code> containing
+pipeline stages <code>@1</code>, <code>@2</code> and <code>@3</code>. Each stage increments the value from
+the previous stage by one in a subsequent clock cycle.
+Flip-flops (represented as grey squares in the diagram)
+carry values from one stage to the next.</p></div></div><div class="row m-y-3"><div class="col-sm-12"><img src="assets/homepage/simple_pipe.png" style="border-top: 2px; border-left: 2px; border-color: #555; border-style: solid" class="img-fluid" /></div></div><div class="row m-y-3"><div class="col-sm-12 col-lg-8"><p>In case you are curious, here&#39;s some corresponding Verilog code:</p><pre style="background-color: white;"><code>logic [2:0] INCR_one_a1, INCR_one_a2;
+logic [2:0] INCR_two_a2, INCR_two_a3;
+logic [2:0] INCR_three_a3;
+
+assign INCR_one_a1[2:0] = 1;
+always_ff @(posedge clk) INCR_one_a2 &lt;= INCR_one_a1;
+assign INCR_two_a2 = INCR_one_a2 + 1;
+always_ff @(posedge clk) INCR_two_a3 &lt;= INCR_two_a2;
+assign INCR_three_a3 = INCR_two_a3 + 1;</code></pre></div></div><div class="row m-y-3"><div class="col-sm-12"><p>Pipeline context reduces bugs and makes your design easy to maintain in the face of timing changes.</p><p>Learn more about TL-Verilog pipelines as well as other powerful constructs, including
+hierarchy, state, validity, and transactions in the TL-Verilog tutorials
+inside the Makerchip IDE.</p></div></div><div class="row m-y-3"><div class="col-sm-4"><h3 id="py-waveform">Organized Waveforms</h3><p>Waveforms are organized by TL-Verilog design hierarchy. Waveforms clearly show
+when signals are carrying meaningful data.</p></div><div class="col-sm-8"><img src="assets/homepage/py-waveform.png" class="img-fluid" /></div></div><div class="row m-y-2"><div class="col-sm-5"><h3 id="diagram">Organized Diagrams</h3><p>Your designs are represented in logic diagrams. TL-Verilog design hierarchy,
+including pipelines and pipeline stages, provides organization to
+your logic diagrams. Below, the path through <code>$ANY</code> ovals shows the
+flow a transaction will follow through an example design.</p></div><div class="col-sm-7"><img src="assets/homepage/py-graph.png" class="img-fluid" /></div></div><div class="row m-y-3"><div class="col-sm-12"><img src="assets/homepage/ANY_Flow.png" style="border-top: 2px; border-left: 2px; border-color: #555; border-style: solid" class="img-fluid" /></div></div><div class="row m-y-3"><div class="col-xs-12"><h2 id="highlight">Linked Design and Debug</h2><p>TL-Verilog constructs in the code editor, diagram, and waveform viewer are all linked together.
+Clicking an element such as a pipesignal in one view will highlight that element
+across all views.</p></div><div class="col-sm-12"><img src="assets/homepage/highlight.png" class="img-fluid" /></div></div><div class="row m-y-3"><div class="col-xs-12"><h2 id="highlight">Tool Integrations</h2><p>Makerchip can easily be launched as a Verilog/TL-Verilog editor from other applications. For example, Makerchip
+provides the digital side of <a href="https://fossee.in/">FOSSEE</a>'s mixed-signal <a href="https://esim.fossee.in/">eSim</a> environment, and <a href="https://pypi.org/project/sandpiper-saas/">SandPiper-SaaS</a> provides eSim's TL-Verilog compilation.</p></div></div><div class="p-t-3 row p-y-3"><a href="sandbox/index.html" style="margin:auto;width:300px" class="btn btn-raised btn-primary btn-lg btn-block">Launch Makerchip IDE</a></div><div class="row"><a target="_blank" href="https://status.makerchip.com/" style="margin:auto"><img alt="server health unknown" src="https://status.makerchip.com/health" /></a></div></div><style type="text/css">
+.mc-theme-dark4-bg,
+.mc-theme-dark4-bg a,
+.mc-theme-dark4-bg a:hover,
+.mc-theme-dark4-bg a:active,
+.mc-theme-dark4-bg a:active:hover {
+  background-color: #466a8d !important;
+  color: #fff;
+}
+.mc-dark-text,
+.mc-dark-text a,
+.mc-dark-text a:hover,
+.mc-dark-text a:active,
+.mc-dark-text a:active:hover {
+  color: rgba(32,48,64,1);
+}
+.no-select,
+.nav-item,
+button,
+.dropdown-item {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                       supported by Chrome and Opera */
+}
+.hover-default-cursor:hover {
+  cursor: default;
+}
+.hover-pointer-cursor:hover {
+  cursor: pointer;
+}
+.dropdown-menu {
+  border-color: #6090c0;
+  border-width: 0px 0px 0px 4px;
+  border-style: solid;
+}
+.dropdown-menu .dropdown-item {
+  padding: 2px 8px 2px 15px;
+  min-height: 37px;
+  cursor: pointer;
+}
+a {
+  color: #6090c0;
+}
+a:hover {
+  color: #537da6;
+}
+.btn-group-raised .btn.btn-primary,
+.btn.bmd-btn-fab.btn-primary,
+.btn.btn-raised.btn-primary {
+  color: #fff;
+  background-color: #537da6;
+  border-color: #537da6;
+}
+.btn-group-raised .btn.btn-primary.active,
+.btn-group-raised .btn.btn-primary.focus,
+.btn-group-raised .btn.btn-primary:active,
+.btn-group-raised .btn.btn-primary:focus,
+.btn-group-raised .btn.btn-primary:hover,
+.btn.bmd-btn-fab.btn-primary.active,
+.btn.bmd-btn-fab.btn-primary.focus,
+.btn.bmd-btn-fab.btn-primary:active,
+.btn.bmd-btn-fab.btn-primary:focus,
+.btn.bmd-btn-fab.btn-primary:hover,
+.btn.btn-raised.btn-primary.active,
+.btn.btn-raised.btn-primary.focus,
+.btn.btn-raised.btn-primary:active,
+.btn.btn-raised.btn-primary:focus,
+.btn.btn-raised.btn-primary:hover,
+.open>.btn-group-raised .btn.btn-primary.dropdown-toggle,
+.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle,
+.open>.btn.btn-raised.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #466a8d;
+  border-color: rgba(32,48,64,1);
+}
+.btn-group-raised .btn.btn-primary.active.focus,
+.btn-group-raised .btn.btn-primary.active:focus,
+.btn-group-raised .btn.btn-primary.active:hover,
+.btn-group-raised .btn.btn-primary:active.focus,
+.btn-group-raised .btn.btn-primary:active:focus,
+.btn-group-raised .btn.btn-primary:active:hover,
+.btn.bmd-btn-fab.btn-primary.active.focus,
+.btn.bmd-btn-fab.btn-primary.active:focus,
+.btn.bmd-btn-fab.btn-primary.active:hover,
+.btn.bmd-btn-fab.btn-primary:active.focus,
+.btn.bmd-btn-fab.btn-primary:active:focus,
+.btn.bmd-btn-fab.btn-primary:active:hover,
+.btn.btn-raised.btn-primary.active.focus,
+.btn.btn-raised.btn-primary.active:focus,
+.btn.btn-raised.btn-primary.active:hover,
+.btn.btn-raised.btn-primary:active.focus,
+.btn.btn-raised.btn-primary:active:focus,
+.btn.btn-raised.btn-primary:active:hover,
+.open>.btn-group-raised .btn.btn-primary.dropdown-toggle.focus,
+.open>.btn-group-raised .btn.btn-primary.dropdown-toggle:focus,
+.open>.btn-group-raised .btn.btn-primary.dropdown-toggle:hover,
+.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle.focus,
+.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle:focus,
+.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle:hover,
+.open>.btn.btn-raised.btn-primary.dropdown-toggle.focus,
+.open>.btn.btn-raised.btn-primary.dropdown-toggle:focus,
+.open>.btn.btn-raised.btn-primary.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #466a8d;
+  border-color: #060a0d;
+}
+.checkbox label input[type=checkbox]:checked+.checkbox-decorator .check,
+label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check {
+  color: #6090c0;
+  border-color: #6090c0;
+}
+.checkbox label input[type=checkbox]:checked+.checkbox-decorator .check:before,
+label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:before {
+  color: #6090c0;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+footer.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 8em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.mc-theme-dark4-bg {
+  color: #fff;
+  background-color: #466a8d !important;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 8px;
 }
 
-.container {
-    width: 300px;
-    margin: 0 auto;
-    margin-top: 100px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+</style><footer style="margin-top: 30px!important" class="footer container-fluid mc-theme-dark4-bg"><div class="container"><div class="row"><div class="col-xs-12 col-md-4"></div><div class="col-xs-12 col-md-4"></div><div class="col-xs-12 col-md-4"><div><a href="terms/index.html">Terms of Service</a></div><div><a href="privacy/index.html">Privacy Policy</a></div><div><a href="dmca/index.html">DMCA Policy</a></div></div></div></div><div style="position: absolute; bottom: 0; width: 100%; left: 0; padding-top: 5px; padding-bottom: 5px" class="mc-theme-dark4-bg"><div class="container"><div>Copyright Redwood EDA, LLC. All rights reserved.</div></div></div></footer><script src="jquery.js"></script><script src="downloads/tether.min.js"></script><script src="downloads/bootstrap-material-design.iife.min.js"></script><script type="text/javascript">
+(function() {
+  $("body").bootstrapMaterialDesign();
 
-h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
+}).call(this);
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-}
-
-.remember-me input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-.btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
-}
-</style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Login</h2>
-    <form id="loginForm" action="#" method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group remember-me">
-            <input type="checkbox" id="rememberMe"> <!-- Add remember me checkbox -->
-            <label for="rememberMe">Remember me</label>
-        </div>
-        <button type="submit" class="btn">Login</button>
-        <div id="errorMessage" class="error-message"></div>
-    </form>
-</div>
-
-<script src="bob.js"></script>
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
-    console.log("Form submitted"); // Debug statement
-
-    // Get the input values
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    console.log("Username:", username);
-    console.log("Password:", password);
-
-    // Check if the input matches the stored credentials
-    if (username === credentials.username && password === credentials.password) {
-        console.log("Login successful"); // Debug statement
-        // Set authenticated flag in localStorage
-        localStorage.setItem('isAuthenticated', true);
-        // Redirect to index1.html
-        window.location.href = 'index1.html';
-    } else {
-        console.log("Invalid username or password"); // Debug statement
-        document.getElementById('errorMessage').textContent = 'Invalid username or password';
-        // Clear the password field
-        document.getElementById('password').value = '';
-    }
-});
-</script>
-
-</body>
-</html>
+</script></body></html>

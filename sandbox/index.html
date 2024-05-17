@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title data-title="Makerchip">Makerchip</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><meta name="theme-color" content="#2d435a" /><link rel="manifest" href="../module/IDE/manifest.json" /><link rel="stylesheet" href="../downloads/roboto_font.css" /><link rel="stylesheet" href="../downloads/roboto_mono_font.css" /><link rel="stylesheet" href="../downloads/material_icons.css" /><link rel="stylesheet" href="../downloads/bootstrap-material-design.min.css" /><link href="../downloads/font-awesome/css/all.min.css" rel="stylesheet" /><link rel="stylesheet" href="IDE.css" /></head><body onload="animateLoading()"><div id="loading"><div id="mc-splash" class="text-xs-center"><img src="../module/IDE/makerchip-loading-animation.svg" class="splash-img" /><h4 class="loading-animation">Loading <span id="wait"></span></h4></div></div><div id="ide"></div><script src="../jquery.js"></script><script src="../downloads/tether.min.js"></script><script src="../downloads/bootstrap-material-design.iife.min.js"></script><script src="../downloads/fabric.js"></script><script type="text/javascript">
+(function() {
+  var backup;
+
+  backup = $;
+
+  window.bootstrapMaterialDesign = function() {
+    return backup('body').bootstrapMaterialDesign();
+  };
+
+  window.$bmd = $;
+
+  window.bootstrapMaterialDesign();
+
+}).call(this);
+
+</script>
+<script type="text/javascript">
+// Perform the loading animation.
+function animateLoading() {
+    // Step immediately once, then every 300ms.
+    var waitEl = document.getElementById("wait");
+    waitEl.innerHTML = ".";
+    window.mcLoadingInterval = window.setInterval(function() {
+        wait.innerHTML = wait.innerHTML.length > 2 ? "" : wait.innerHTML + ".";
+    }, 300);
+}
+</script><script src="../blade/blade.js"></script><script src="../module/IDE/ide_init.js"></script><script type="text/javascript">
+(function() {
+  window.baseApi = "";
+
+  window.require = IDERequireConfig();
+
+}).call(this);
+
+</script><script data-main="/module/IDE/IDE.js" src="../requirejs/index.html"></script></body></html>
