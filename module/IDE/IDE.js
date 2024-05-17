@@ -414,7 +414,7 @@
   (Should now be provided at window level on requirejs load.)
   */
   //  waitSeconds: 0
-  define([`${(ref = window.BASE_API_URL) != null ? ref : ""}/modules/ModuleConfig.js`, "module"], function(ModuleConfig, module) {
+  define([`${(ref = window.BASE_API_URL) != null ? ref : ""}/sandbox/modules/ModuleConfig.js`, "module"], function(ModuleConfig, module) {
     var CustomModuleConfig, baseApi, ideConfig, ref1;
     baseApi = (ref1 = window.BASE_API_URL) != null ? ref1 : "";
     ideConfig = {};
